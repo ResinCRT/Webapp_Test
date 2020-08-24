@@ -1,0 +1,19 @@
+{%for post in posts%}
+<h3><a href="{{post.get_absolute_url}}">{{post.title}}</a></h3>
+{{post.modify_dt|date:"N d, Y"}}<br>작성자 : {{post.owner}}<br>조회수 : {{post.read_cnt}}
+<p>{{post.description}}</p>
+{{object.content | safe}}
+{% endfor %}
+<br>
+
+<div>
+     <span>
+         {% include "pagination.html" %}
+         {% if user.is_active %}
+            <div class="text-right mr-3">
+                <a href="{%url 'blog:add' %}" class="btn btn-primary btn-sm">
+                <i class="fas fa-pencil-alt"></i> 쓰기</a>
+            </div>
+         {% endif %}
+     </span>
+</div>

@@ -1,0 +1,12 @@
+{% extends "base2.html" %}
+
+{% block title %}bookmark_main.html{% endblock %}
+{% block content %}
+
+<div style="margin-left:10%;">
+    <h1>Welcome to Bookmark app!</h1>
+    <br>
+    <a href="{% url 'bookmark:index' %}"><h1 style="font-size:40pt;">Bookmark</h1></a>
+    <br>
+    <a href="{% url 'blog:index' %}"><h1 style="font-size:40pt;">Blog</h1></a>
+</div>

@@ -1,0 +1,13 @@
+{% extends "base2.html" %}
+{% block title %}bookmark_delete.html{% endblock %}
+{% block content %}
+    <div>
+        <h1>Bookmark Delete</h1>
+        <br><br>
+        <form action="." method="post">{% csrf_token %}
+            <p>Are you sure you want to delete "{{object}}"</p>
+            <input type="submit" value="Confirm" class="btn-danger btn-sm">
+        </form>
+
+    </div>
+{% endblock %}

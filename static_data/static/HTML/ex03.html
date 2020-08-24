@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="demo">목록 보기</p>
+    <div style="width:120px;height:20px;margin-bottom:130px;">
+        <ul id="item-list">
+            <li class="list-item">item - 1</li>
+            <li class="list-item">item - 2</li>
+            <li class="list-item">item - 3</li>
+            <li class="list-item">item - 4</li>
+        </ul>
+    </div>
+    <script>
+        let items = document.getElementsByClassName("list-item")
+        for (let item of items) {
+            console.log(item);
+            item.onclick = function (e) {
+                let target = e.target;
+                target.style.color = 'red';
+            }
+            
+            item.onmouseover = function (e) {
+                let target = e.target;
+                target.style.cursor = 'pointer';
+                target.style.backgroundColor = 'gray';
+            }
+            item.onmouseout = function (e) {
+                let target = e.target;
+                target.style.cursor = 'default';
+                target.style.backgroundColor = 'white';
+            }
+        }
+        /*for (let i = 0; i < items.length; i++) {
+            items[i].onclick = function(e) {
+            let target = e.target;
+            console.log(target);
+            target.style.color = 'red';
+        }; // onclick 이벤트 핸들러 설정
+        }*/
+    </script>
+    <div onmouseover="mOver(this)" onmouseout="mOut(this)"
+        style="background-color:#D94A38;width:120px;height:20px;padding:40px">
+        Mouse Over Me</div>
+    <script>
+        function mOver(obj) {
+            obj.innerHTML = "Thank You"
+            obj.style.backgroundColor = "#1ec5e5"
+        }
+
+        function mOut(obj) {
+            obj.innerHTML = "Mouse Over Me"
+            obj.style.backgroundColor = "#D94A38"
+        }
+    </script>
+</body>
+
+</html>

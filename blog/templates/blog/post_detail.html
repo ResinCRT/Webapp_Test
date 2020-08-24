@@ -1,0 +1,51 @@
+{% extends "base2.html" %}
+
+{% block title %}<h2>{{post.title}}</h2>{% endblock %}
+{% block content %}
+
+
+<p>
+    {%if object.get_previous %}
+    <a class="text-white mx-1 btn btn-primary" href="{{object.get_previous.get_absolute_url}}"
+       title="이전 글"><i class="fas fa-angle-double-left"></i></a>
+    {%endif%}
+    {%if object.get_next %}
+    | <a class="text-white mx-1 btn btn-primary" href="{{object.get_next.get_absolute_url}}"
+         title="다음 글"><i class="fas fa-angle-double-right"></i></a>
+    {%endif%}
+    <a href="{% url 'blog:index' %}">목록</a>
+</p>
+
+<p>작성자 : {{object.owner}}<br>{{object.modify_dt | date:"j F Y"}}<br> 조회수 : {{object.read_cnt}}</p>
+<br>
+<div class="text-right my-3">
+    {% for file in post.files.all %}
+    <a href="{%url 'blog:download' file.id%}" class="ml-4">
+        <i class="fas fa-download"></i>
+        {{file.filename}} ({{file.size | filesizeformat}}) </a>
+    {% endfor %}
+</div>
+
+<div class="text-right">
+    <a href="{% url 'blog:update' post.id %}" class="mr-3">
+        <i class="far fa-edit"></i> 수정</a>
+    <a href="{% url 'blog:delete' post.id %}" class="text-danger mr-3">
+        <i class="fas fa-trash"></i> 삭제</a>
+</div>
+
+<div>
+    {{object.content | safe}}
+</div>
+<br>
+<div>
+    <b>TAGS</b> <i class="fas fa-tag"></i>
+    {% load taggit_templatetags2_tags %}
+    {% get_tags_for_object object as "tags" %}
+    {% for tag in tags %}
+    <a href="{% url 'blog:tagged_object_list' tag.name %}">{{tag.name}}</a>
+    {% endfor %}
+    &emsp;<a href="{% url 'blog:tag_cloud' %}">
+    <span class="btn btn-info btn-sm">TagCloud</span> </a>
+</div>
+
+{% endblock %}

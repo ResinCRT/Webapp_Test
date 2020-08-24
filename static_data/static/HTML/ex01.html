@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="demo">목록 보기</p>
+    <ul id="item-list">
+        <li class="list-item">item - 1</li>
+        <li class="list-item">item - 2</li>
+        <li class="list-item">item - 3</li>
+        <li class="list-item">item - 4</li>
+    </ul>
+    <img src="/static_data/waver.jpg">
+    <script>
+        let demo = document.getElementById("demo")
+        demo.innerHTML = "<h1>Hello World!</h1>"
+        let i = 0;
+        setInterval(function () {
+            i++;
+            demo.innerHTML = `<h1>${i}</h1>`;
+        }, 1000);
+        let images = document.getElementsByTagName("img");
+        console.log(images.length);
+        console.log(images);
+        images[0].width = "200";
+        let items = document.getElementsByClassName("list-item")
+        for (let item of items) {
+            item.onclick = function (e) {
+                let target = e.target;
+                let parent = target.parentNode;
+                console.log(parent);
+                console.log(parent.parentNode);
+            }
+        }
+    </script>
+</body>
+
+</html>

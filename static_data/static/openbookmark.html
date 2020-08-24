@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div>
+        <h1>Open Bookmark</h1>
+        <div class="w-75 mx-auto">
+            <form id="frm">
+                <input type="hidden" name="id" id="item-id">
+                <div class="row">
+                    <div class="col-sm-2">타이틀</div>
+                    <div class="col-sm-8">
+                        <input type="text" name="title" class="w-100">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">url</div>
+                    <div class="col-sm-8">
+                        <input type="text" name="url" class="w-100">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <input type="button" id="submit-btn" value="확인">
+                        <input type="button" id="reset-btn" value="취소">
+                    </div>
+                </div>
+            </form>
+            <div class="my-5">
+                <h4>bookmark 목록</h4>
+                <ul id="bookmark-list"></ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/static_data/static/js/common.js"></script>
+<script src="/static_data/static/js/openbookmark.js"></script>
+</html>

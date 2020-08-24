@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img id="image" src="/static_data/ocean.jpg" width="400px" height="300px">
+    <br>
+    <button id="prevBtn">이전</button>
+    <button id="nextBtn">다음</button>
+    <script>
+        let images = [
+            "/static_data/ocean.jpg",
+            "/static_data/waver.jpg",
+        ]
+        let index = 0;
+        document.getElementById("nextBtn").addEventListener("click",toNext);
+        document.getElementById("prevBtn").addEventListener("click",toPrev);
+        setInterval(toNext,2000);
+        function toNext(){
+            index++;
+            if(index >= images.length){
+                index = 0;
+            }
+            let target = document.getElementById("image");
+            target.src = images[index];
+        }
+        function toPrev(){
+            index--;
+            if(index < 0){
+                index = images.length - 1;
+            }
+            let target = document.getElementById("image");
+            target.src = images[index];
+        }
+    </script>
+</body>
+</html>
